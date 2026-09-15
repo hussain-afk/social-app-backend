@@ -68,11 +68,11 @@ export const loginUser = async (req, res) => {
         }
         const token = await generateToken(isUserValid);
         res.cookie("token", token,
-            // {
-            //     httpOnly: true,
-            //     secure: true,
-            //     sameSite: 'none'
-            // }
+            {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'none'
+            }
         );
 
         return res.status(201).json({
