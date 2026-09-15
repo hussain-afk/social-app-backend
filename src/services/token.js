@@ -6,7 +6,7 @@ const generateToken = async (user) => {
         id: user._id,
         username: user.username,
         email: user.email,
-    }, envConfig.jwt, { expiresIn: '24h' });
+    }, envConfig.jwt, { expiresIn: '24h' }); 
 
     return token;
 };
