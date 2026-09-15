@@ -1,5 +1,5 @@
 import express from "express";
-import { createPost, getAllPosts, addComment, getAllUserPosts } from "../controllers/post.controller.js";
+import { createPost, getAllPosts, addComment, getAllUserPosts, deletePost } from "../controllers/post.controller.js";
 import { authMiddleware } from "../middlewares/auth.middleware.js";
 import multer from "multer";
 
@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post("/create", authMiddleware, upload.single('content'), createPost);
 router.patch("/comment/:postId", authMiddleware, addComment);
+router.delete("/delete/:postId", authMiddleware, deletePost);
 router.get("/all", authMiddleware, getAllPosts);
 router.get("/user", authMiddleware, getAllUserPosts); // User ke posts ko fetch karne ke liye
 

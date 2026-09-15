@@ -85,3 +85,21 @@ export const getAllUserPosts = async (req, res) => {
         return res.status(500).json({ message: "Internal server error" });
     }
 }
+
+export const deletePost = async (req, res) => {
+    try {
+        const { postId } = req.params;
+        // const user = req.user; 
+        // if (!user) {
+        //     return res.status(401).json({ message: "Unauthorized" });
+        // }
+        const deletedPost = await postSchema.findByIdAndDelete(postId);
+        if (!deletedPost) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+        return res.status(200).json({ message: "Post deleted successfully" });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+}
