@@ -59,7 +59,7 @@ export const addComment = async (req, res) => {
                     }
                 }
             },
-            { returnDocument: 'after' } // Ye option updated post wapas deta hai
+            { new: true } // Ye option updated post wapas deta hai
         ).populate('comments.userId', 'username profilePicture'); // Optional: User ki details sath lane ke liye
 
         if (!updatedPost) {
